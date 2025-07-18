@@ -1,15 +1,22 @@
 // Get keyboard input
 var dir = keyboard_check(vk_right) - keyboard_check(vk_left);
-var jump = keyboard_check_pressed(vk_space);
+var jump_pressed = keyboard_check_pressed(vk_space);
+var jump_held_now = keyboard_check(vk_space); 
 
 // Set horizontal and vertical speed increments for this frame
 hsp = walk_speed * dir;
 vsp += grv;
 
 // Are we jumping?
-if(jump && on_ground) {
-	vsp += jump_speed;
-	on_ground = false;	
+if (jump_pressed && jump_count < max_jumps) {
+    vsp = jump_speed;         // usually negative, like -6
+    jump_timer = jump_hold_max;
+    on_ground = false;
+	jump_count++;
+}
+if (!on_ground && jump_held_now && jump_timer > 0) {
+    vsp -= 0.5;               // extra upward force
+    jump_timer -= 1;
 }
 
 // Set the correct sprite
@@ -47,6 +54,7 @@ if(place_meeting(x, y+vsp, oBlock)){
 	}
 	vsp = 0
 	on_ground = true;
+	jump_count = 0;
 }
 
 // Finally, set the coordinate (x,y) position of the sprite for this frame
