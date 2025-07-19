@@ -3,9 +3,15 @@
   "%Name":"sPlayer_idle",
   "bboxMode":2,
   "bbox_bottom":31,
+<<<<<<< HEAD
   "bbox_left":7,
   "bbox_right":25,
   "bbox_top":8,
+=======
+  "bbox_left":6,
+  "bbox_right":26,
+  "bbox_top":7,
+>>>>>>> ae448f105e074c79da52a0f07e6d0188b314516b
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
