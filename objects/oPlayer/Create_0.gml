@@ -1,5 +1,6 @@
 hsp = 0;							// horizontal speed
 vsp = 0;							// vertical speed
+terminal_vsp = 8;					// terminal velocity
 dir = 0;							// horizontal direction
 walk_speed = 2.5;					// walking speed of player
 grv = 0.4;							// gravity strength or how far player falls in a single frame

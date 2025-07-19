@@ -28,6 +28,9 @@ if (!on_ground && jump_held_now && jump_timer > 0) {
     jump_timer -= 1;
 }
 
+// Make sure vsp never exceeds terminal velocity
+vsp = min(vsp, terminal_vsp);
+
 // Set the correct sprite
 if(on_ground && hsp == 0){
 	sprite_index = sPlayer_idle;
@@ -67,6 +70,10 @@ if(place_meeting(x, y+vsp, [oBlock, oBox])){
 	on_ground = true;
 	jump_count = 0;
 }
+
+// Debug messages for speed
+if hsp != 0 show_debug_message("hsp: " + string(hsp));
+if vsp != 0 show_debug_message("vsp: " + string(vsp));
 
 // Finally, set the coordinate (x,y) position of the sprite for this frame
 x += hsp;
