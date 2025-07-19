@@ -5,5 +5,5 @@ with (other) {
 }
 
 // Update the Player's score
-player_score += 100;
-show_debug_message("Player Score: " + string(player_score));
+global.score += PICKUP_CHERRY;
+show_debug_message("Player Score: " + string(global.score));
