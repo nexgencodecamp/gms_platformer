@@ -35,21 +35,23 @@ else if(on_ground){
 	}
 }
 
-
 // Update horizontal movement based on impending collision
 if (dir!=0){
 	image_xscale = dir;
 }
-if(place_meeting(x+hsp, y, oBlock)) {
-	while (!place_meeting(x + sign(hsp), y, oBlock)) {
+
+var is_going_to_collide_x = place_meeting(x+hsp, y, solid_objects);
+
+if(place_meeting(x+hsp, y, [oBlock, oBox])) {
+	while (!place_meeting(x + sign(hsp), y, solid_objects)) {
 		x += sign(hsp);
 	}
 	hsp = 0;
 }
 
 // Update vertical movement based on impending collision
-if(place_meeting(x, y+vsp, oBlock)){
-	while(!place_meeting(x, y + sign(vsp), oBlock)) {
+if(place_meeting(x, y+vsp, [oBlock, oBox])){
+	while(!place_meeting(x, y + sign(vsp), solid_objects)) {
 		y += sign(vsp);
 	}
 	vsp = 0
