@@ -4,7 +4,16 @@ var jump_pressed = keyboard_check_pressed(vk_space);
 var jump_held_now = keyboard_check(vk_space); 
 
 // Set horizontal and vertical speed increments for this frame
-hsp = walk_speed * dir;
+//hsp = walk_speed * dir;
+if (on_ground) {
+    hsp = walk_speed * dir; // Normal grounded movement
+} else {
+    // In air: preserve momentum, but allow some control
+    hsp += dir * air_accel;
+    hsp = clamp(hsp, -air_max, air_max);
+}
+
+// Add gravity each frame because gravity is ALWAYS acting on a player
 vsp += grv;
 
 // Are we jumping?
@@ -15,7 +24,7 @@ if (jump_pressed && jump_count < max_jumps) {
 	jump_count++;
 }
 if (!on_ground && jump_held_now && jump_timer > 0) {
-    vsp -= 0.5;               // extra upward force
+    vsp -= 0.4;               // extra upward force
     jump_timer -= 1;
 }
 
@@ -35,21 +44,23 @@ else if(on_ground){
 	}
 }
 
-
 // Update horizontal movement based on impending collision
 if (dir!=0){
 	image_xscale = dir;
 }
-if(place_meeting(x+hsp, y, oBlock)) {
-	while (!place_meeting(x + sign(hsp), y, oBlock)) {
+
+var is_going_to_collide_x = place_meeting(x+hsp, y, solid_objects);
+
+if(place_meeting(x+hsp, y, [oBlock, oBox])) {
+	while (!place_meeting(x + sign(hsp), y, solid_objects)) {
 		x += sign(hsp);
 	}
 	hsp = 0;
 }
 
 // Update vertical movement based on impending collision
-if(place_meeting(x, y+vsp, oBlock)){
-	while(!place_meeting(x, y + sign(vsp), oBlock)) {
+if(place_meeting(x, y+vsp, [oBlock, oBox])){
+	while(!place_meeting(x, y + sign(vsp), solid_objects)) {
 		y += sign(vsp);
 	}
 	vsp = 0
