@@ -3,8 +3,10 @@ var dir = keyboard_check(vk_right) - keyboard_check(vk_left);
 var jump_pressed = keyboard_check_pressed(vk_space);
 var jump_held_now = keyboard_check(vk_space); 
 
+// If the player is dead then skip all of this - stops moving down after collision with spikes
+if (isDead) exit;
+
 // Set horizontal and vertical speed increments for this frame
-//hsp = walk_speed * dir;
 if (on_ground) {
     hsp = walk_speed * dir; // Normal grounded movement
 } else {
@@ -51,8 +53,6 @@ else if(on_ground){
 if (dir!=0){
 	image_xscale = dir;
 }
-
-var is_going_to_collide_x = place_meeting(x+hsp, y, solid_objects);
 
 if(place_meeting(x+hsp, y, [oBlock, oBox])) {
 	while (!place_meeting(x + sign(hsp), y, solid_objects)) {

@@ -13,6 +13,7 @@ on_ground = false;					// is the player on the ground?
 solid_objects = [oBlock, oBox];		// array (list) of solid object
 air_accel = 0.5;					// adjust this for responsiveness
 air_max = walk_speed;				// limit in-air speed
+isDead = false;						// is the player dead or alive?
 
 
 
