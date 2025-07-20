@@ -54,7 +54,7 @@ if (dir!=0){
 	image_xscale = dir;
 }
 
-if(place_meeting(x+hsp, y, [oBlock, oBox])) {
+if(place_meeting(x+hsp, y, solid_objects)) {
 	while (!place_meeting(x + sign(hsp), y, solid_objects)) {
 		x += sign(hsp);
 	}
@@ -62,7 +62,7 @@ if(place_meeting(x+hsp, y, [oBlock, oBox])) {
 }
 
 // Update vertical movement based on impending collision
-if(place_meeting(x, y+vsp, [oBlock, oBox])){
+if(place_meeting(x, y+vsp, solid_objects)){
 	while(!place_meeting(x, y + sign(vsp), solid_objects)) {
 		y += sign(vsp);
 	}

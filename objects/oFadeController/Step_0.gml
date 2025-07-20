@@ -7,6 +7,7 @@ if (fading_out) {
         if (next_room == -1) {
             room_restart();
         } else {
+			global.transitioned = true;
             room_goto(next_room);
         }
 
