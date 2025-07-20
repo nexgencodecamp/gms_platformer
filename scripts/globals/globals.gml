@@ -19,4 +19,7 @@ function transition_to_room(target_room) {
     f.fading_out = true;
 	
     global.transitioned = (target_room != -1);
+	
+	// Stop soundtrack
+	audio_stop_all()
 }

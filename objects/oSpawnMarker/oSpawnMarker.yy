@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_SpawnMarker",
+    "path":"sprites/spr_SpawnMarker/spr_SpawnMarker.yy",
+  },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }
