@@ -1,4 +1,9 @@
 // Get keyboard input
+if (keyboard_check_pressed(ord("G"))) {
+	global.god_mode = !global.god_mode;
+	show_debug_message("### GOD MODE: " + string(global.god_mode));
+}
+
 var dir = keyboard_check(vk_right) - keyboard_check(vk_left);
 var jump_pressed = keyboard_check_pressed(vk_space);
 var jump_held_now = keyboard_check(vk_space); 

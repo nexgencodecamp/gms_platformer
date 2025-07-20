@@ -1,4 +1,4 @@
-if (!isDead) {
+if (!global.god_mode && !isDead) {
 	isDead = true;
 	sprite_index = sPlayer_hit;
 	image_index = 0;

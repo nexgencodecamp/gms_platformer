@@ -10,4 +10,8 @@ if (instance_exists(p)) {
     draw_text(40, 5, "SCORE: --");
 }
 
+if (global.god_mode) {
+    draw_set_halign(fa_right);
+    draw_text(room_width - 40, 10, "GOD MODE");
+}
 

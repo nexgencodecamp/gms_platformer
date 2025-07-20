@@ -3,6 +3,7 @@
 #macro SCORE_NUM_ZEROS	6
 
 ///////////////////////////
+global.god_mode = false;		// Can set God mode and avoid death
 global.next_facing = 1;			// Facing left or right when moving to next room
 global.transitioned = false 	// Flag to signal RoomStart to reposition the player
 
